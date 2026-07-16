@@ -1,110 +1,123 @@
-# Know-Your-Heroes
+# 🇮🇳 Know Your Heroes
 
-START
-  ↓
-Home Page Load
-  ↓
-Show Hero Section (India background + Title + Music)
-  ↓
-Display "Major Wars Timeline"
-  ↓
-User selects War/Event Card
-  ↓
-Click "Know More"
-  ↓
-War Detail Page Opens
-  ↓
----------------------------------
-| War Information Section        |
-| - Year                         |
-| - Location                    |
-| - Countries involved          |
----------------------------------
-  ↓
----------------------------------
-| War Statistics Section         |
-| - Soldiers involved            |
-| - Martyrs                     |
-| - Injured                     |
----------------------------------
-  ↓
----------------------------------
-| Heroes Section                 |
-| - Soldier Name                |
-| - Age                         |
-| - Rank                        |
-| - Contribution                |
----------------------------------
-  ↓
----------------------------------
-| India Response Section         |
-| - Awards (PVC, etc.)          |
-| - Government actions          |
-| - Memorials                  |
----------------------------------
-  ↓
----------------------------------
-| Media Section                  |
-| - Videos (YouTube embed)      |
-| - Images                      |
----------------------------------
-  ↓
-User Scrolls Down
-  ↓
-Current Defence Overview Page
-  ↓
-- Army %
-- Navy %
-- Air Force %
-- Special Forces
-  ↓
-END
+A full-stack web application dedicated to honoring the brave heroes of the Indian Armed Forces. The platform aims to provide information about India's military heroes, their achievements, gallantry awards, major wars, and military operations through an interactive and educational experience.
 
+> 🚧 **Project Status:** Frontend Completed | Backend Under Development
 
-The Kargil War was fought between May and July 1999 in the Kargil region of Jammu and Kashmir (now in Ladakh). Pakistani soldiers and militants secretly occupied high mountain positions on the Indian side of the Line of Control (LoC). India launched Operation Vijay to recapture these strategic peaks. After intense fighting in difficult terrain, India successfully regained most of the occupied territory. The war ended on 26 July 1999, celebrated every year in India as Kargil Vijay Diwas.
+---
 
-Key facts to remember:
+## 📖 About the Project
 
-📅 Duration: May – July 1999
-📍 Location: Kargil, Ladakh
-🇮🇳 Indian operation: Operation Vijay
-🏆 Result: India regained the occupied territory
-🎖️ Victory Day: 26 July – Kargil Vijay Diwas
+**Know Your Heroes** is a full-stack web application built to educate and inspire users by showcasing the stories of Indian Army heroes and significant military events. The project combines an engaging user interface with dynamic backend functionality (currently in development).
 
-| Year             | War / Conflict                  | Opponent                           | Main Forces Involved                  | Outcome                                                                                         |
-| ---------------- | ------------------------------- | ---------------------------------- | ------------------------------------- | ----------------------------------------------------------------------------------------------- |
-| **1947–48**      | Indo-Pakistani War of 1947–1948 | Pakistan                           | Army, Air Force                       | India secured much of Jammu & Kashmir; ceasefire established the Line of Control's predecessor. |
-| **1961**         | Annexation of Goa               | Portuguese India                   | Army, Navy, Air Force                 | India liberated Goa, Daman, and Diu from Portuguese rule.                                       |
-| **1962**         | Sino-Indian War                 | China                              | Army, Air Force (limited combat role) | China declared a unilateral ceasefire after major territorial gains in disputed areas.          |
-| **1965**         | Indo-Pakistani War of 1965      | Pakistan                           | Army, Air Force                       | Ended in a ceasefire; status quo restored.                                                      |
-| **1971**         | Indo-Pakistani War of 1971      | Pakistan                           | Army, Navy, Air Force                 | Decisive Indian victory; led to the creation of Bangladesh.                                     |
-| **1984–present** | Operation Meghdoot              | Pakistan                           | Army, Air Force                       | India gained and continues to hold key positions on the Siachen Glacier.                        |
-| **1987–1990**    | Indian Peace Keeping Force      | LTTE (during peacekeeping mission) | Army, Navy, Air Force                 | Mission ended with withdrawal after difficult fighting.                                         |
-| **1999**         | Kargil War                      | Pakistan                           | Army, Air Force                       | India recaptured occupied positions along the Line of Control.                                  |
+---
 
+## ✨ Current Features (Frontend)
 
+- 🇮🇳 Interactive landing page
+- 🪖 Hero showcase section
+- ⚔️ Major wars and military operations timeline
+- 📖 Story wall section
+- 🎵 Patriotic background music
+- ✨ Smooth animations and transitions
+- 📱 Fully responsive design
+- 🎨 Modern UI/UX
 
+---
 
-	Kargil War	Pakistan	Army, Air Force	India recaptured occupied positions along the Line of Control.
-Major Military Operations (Not Full-Scale Wars)
+## 🚀 Upcoming Features (Backend)
 
-These were significant military operations even though they were not declared wars.
+- 🔐 User authentication
+- 📝 Admin dashboard to manage heroes and stories
+- 🗄️ Database integration
+- 🔍 Dynamic search and filtering
+- 💬 User story submission
+- ❤️ Favorite heroes feature
+- 📊 Dynamic content management
+- ☁️ Cloud database support
 
-Operation Cactus (1988) – Indian forces rescued the Maldives government from a coup attempt.
-Operation Pawan (1987–1990) – Combat operations by the Indian Peace Keeping Force.
-Operation Vijay – The campaign to reclaim Kargil heights.
-2016 Indian Line of Control strike – Cross-border strikes on militant launch pads.
-2019 Balakot airstrike – Air strike against a militant training facility in Pakistan.
-Major Naval Operations
-Operation Trident (1971) – Indian Navy attacked Karachi Harbor, sinking Pakistani vessels and causing major damage.
-Operation Python (1971) – A second successful naval strike on Karachi.
-Operation Talwar (1999) – Indian Navy blockaded Pakistani maritime routes during the Kargil conflict.
-Major Air Force Operations
-Operation Safed Sagar (1999) – The Indian Air Force supported the Army in recapturing Kargil positions.
-The Indian Air Force also played major combat roles in the 1965 and 1971 wars.
-The "Big Five" Wars Every Indian Should Know
-🥇 Indo-Pakistani War of 1971 – India's greatest military victory.
-🥈 Kargil War – Victory in high-altitude warfare.
-🥉 Indo-Pakistani War of 1965 – Large-scale tank and air battles.
-⭐ Indo-Pakistani War of 1947–1948 – The first war after independence over Jammu and Kashmir.
-⭐ Sino-Indian War – A difficult conflict with China that prompted major reforms in India's military preparedness.
+---
+
+## 🛠️ Tech Stack
+
+### Frontend
+- HTML5
+- CSS3
+- JavaScript
+
+### Backend *(In Progress)*
+- PHP
+- MySQL
+
+---
+
+## 📂 Project Structure
+
+```
+Know-Your-Heroes/
+│
+├── frontend/
+│   ├── index.html
+│   ├── style.css
+│   └── script.js
+│
+├── backend/          (Coming Soon)
+├── database/         (Coming Soon)
+├── README.md
+└── LICENSE
+```
+
+---
+
+## 🚀 Installation
+
+1. Clone the repository
+
+```bash
+git clone https://github.com/rajshree051205-cloud/Know-Your-Heroes.git
+```
+
+2. Open the project folder in Visual Studio Code.
+
+3. Launch `index.html` using Live Server or any modern web browser.
+
+---
+
+## 🎯 Project Roadmap
+
+- [x] Design UI/UX
+- [x] Develop responsive frontend
+- [x] Hero and wars interface
+- [ ] PHP backend development
+- [ ] MySQL database integration
+- [ ] Admin panel
+- [ ] User authentication
+- [ ] Dynamic hero management
+- [ ] Story submission system
+- [ ] Deployment
+
+---
+
+## 👩‍💻 Developer
+
+**Rajshree Kavia**
+
+B.Tech Computer Science Engineering (CSE)
+
+GitHub: https://github.com/rajshree051205-cloud
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License.
+
+---
+
+## 🙏 Tribute
+
+This project is dedicated to the brave soldiers of the **Indian Armed Forces** whose courage, sacrifice, and service continue to inspire generations.
+
+> **"Service Before Self."**
+
+⭐ If you find this project meaningful, consider giving it a star!
