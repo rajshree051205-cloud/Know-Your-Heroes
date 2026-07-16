@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Know Your Heroes — India's Wars, Warriors &amp; Watch</title>
+<meta name="description" content="An interactive tribute to India's wars, its Param Vir Chakra heroes, and the families who carry their memory." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div class="scroll-progress-track"><div id="scrollProgress" class="scroll-progress-bar"></div></div>
+
+<audio id="ambientAudio" loop>
+  <!-- Add your own ambient/anthem track: <source src="assets/ambient.mp3" type="audio/mpeg"> -->
+</audio>
+
+<header class="site-header">
+  <a href="#top" class="brand">
+    <span class="brand-mark" aria-hidden="true">
+      <svg viewBox="0 0 40 40" width="28" height="28"><circle cx="20" cy="20" r="18" fill="none" stroke="currentColor" stroke-width="1.4"/><g stroke="currentColor" stroke-width="1"><line x1="20" y1="4" x2="20" y2="36"/><line x1="4" y1="20" x2="36" y2="20"/><line x1="8.3" y1="8.3" x2="31.7" y2="31.7"/><line x1="31.7" y1="8.3" x2="8.3" y2="31.7"/></g><circle cx="20" cy="20" r="3" fill="currentColor"/></svg>
+    </span>
+    Know Your Heroes
+  </a>
+  <nav class="site-nav">
+    <a href="#timeline" class="nav-link">Wars</a>
+    <a href="#operations" class="nav-link">Operations</a>
+    <a href="#defenceOverview" class="nav-link">Defence Today</a>
+    <a href="#storyWall" class="nav-link">Share a Story</a>
+  </nav>
+  <button id="soundToggle" class="sound-toggle" title="Toggle ambient sound" aria-label="Toggle ambient sound">
+    <svg viewBox="0 0 24 24" class="icon-sound-on"><path fill="currentColor" d="M4 9v6h4l5 5V4L8 9H4z"/><path fill="none" stroke="currentColor" stroke-width="1.5" d="M16 8.5a5 5 0 0 1 0 7"/></svg>
+  </button>
+</header>
+
+<main id="top">
+
+  <!-- ============ HERO ============ -->
+  <section class="panel hero" id="hero" style="--z:1">
+    <div class="hero-flag-parallax">
+      <div class="hero-flag" aria-hidden="true">
+        <canvas id="flagCanvas"></canvas>
+      </div>
+    </div>
+    <div class="hero-content">
+      <p class="eyebrow">A living tribute · est. <span id="heroYears">1947</span></p>
+      <h1 class="hero-title">Know Your<br />Heroes</h1>
+      <p class="hero-sub">Every ridge held, every border watched, every name remembered.
+        Explore the wars that shaped modern India, the men and women who fought them,
+        and the families who still tell their stories.</p>
+      <div class="hero-actions">
+        <a href="#timeline" class="btn btn-primary">Begin the Timeline ↓</a>
+        <a href="#storyWall" class="btn btn-ghost">Share Your Family's Story</a>
+      </div>
+    </div>
+    <div class="scroll-cue" aria-hidden="true"><span></span> Scroll to roll the wheel of honour</div>
+  </section>
+
+  <!-- ============ TIMELINE 3D COVERFLOW ============ -->
+  <section class="panel timeline-panel" id="timeline" style="--z:2">
+    <div id="wheelRunway" class="wheel-runway">
+      <div class="timeline-pin">
+        <div class="panel-inner">
+          <div class="section-head reveal">
+            <p class="eyebrow">1947 — Present</p>
+            <h2>The March of Time</h2>
+            <p class="section-lede">Scroll to march through the decades — or tap a plaque — to open the full
+              record of each war: its numbers, its heroes, and how India answered.</p>
+          </div>
+
+          <div class="coverflow-stage">
+            <div class="coverflow-line" aria-hidden="true"></div>
+            <div id="coverflow" class="coverflow-track" role="listbox" aria-label="Select a war"></div>
+          </div>
+          <p class="wheel-hint">10 wars, 1947 → present · keep scrolling to march through all of them</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline-detail-wrap">
+      <div class="panel-inner">
+        <div id="warDetail" class="war-detail reveal" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ OPERATIONS ============ -->
+  <section class="panel operations-panel" id="operations" style="--z:3">
+    <div class="panel-inner">
+      <div class="section-head reveal">
+        <p class="eyebrow">Beyond declared wars</p>
+        <h2>Major Operations</h2>
+        <p class="section-lede">Not every action was a full-scale war — some were quieter, sharper, and no less
+          decisive.</p>
+      </div>
+      <div id="operationsGrid" class="operations-grid reveal"></div>
+    </div>
+  </section>
+
+  <!-- ============ DEFENCE TODAY ============ -->
+  <section class="panel defence-panel" id="defenceOverview" style="--z:4">
+    <div class="panel-inner">
+      <div class="section-head reveal">
+        <p class="eyebrow">The watch continues</p>
+        <h2>Current Defence Overview</h2>
+        <p class="section-lede">India maintains one of the world's largest active militaries across four
+          branches. Figures below are illustrative approximations for public understanding, not classified data.</p>
+      </div>
+      <div id="defenceBars" class="defence-bars reveal"></div>
+      <div class="defence-note reveal">
+        <h4>Current situation, in brief</h4>
+        <p>India's armed forces remain deployed along the Line of Control with Pakistan and the Line of Actual
+          Control with China, alongside continuous counter-terrorism, disaster-relief, and UN peacekeeping
+          commitments abroad. Border talks and phased de-escalation processes continue at the military and
+          diplomatic level. This summary is general and educational — for current developments, please consult
+          verified news sources.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SHARE A STORY ============ -->
+  <section class="panel story-panel" id="storyWall" style="--z:5">
+    <div class="panel-inner">
+      <div class="section-head reveal">
+        <p class="eyebrow">In their own words</p>
+        <h2>Share Your Story</h2>
+        <p class="section-lede">If your family carries the memory of someone who served or made the ultimate
+          sacrifice, tell their story here. Every entry joins the wall below, for every visitor to read.</p>
+      </div>
+
+      <div class="story-layout">
+        <form id="storyForm" class="story-form reveal" novalidate>
+          <div class="field">
+            <label for="heroName">Their name</label>
+            <input type="text" id="heroName" name="heroName" placeholder="e.g. Havildar Ramesh Chander" required>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="relation">Your relation to them</label>
+              <input type="text" id="relation" name="relation" placeholder="e.g. Written by his daughter">
+            </div>
+            <div class="field">
+              <label for="unit">Regiment / Unit <span class="optional">(optional)</span></label>
+              <input type="text" id="unit" name="unit" placeholder="e.g. 13 JAK RIF">
+            </div>
+          </div>
+          <div class="field">
+            <label for="story">Their story</label>
+            <textarea id="story" name="story" rows="5" placeholder="Share a memory, an achievement, or what you want the world to know about them." required></textarea>
+          </div>
+          <div class="field">
+            <label for="submittedBy">Your name</label>
+            <input type="text" id="submittedBy" name="submittedBy" placeholder="e.g. Priya P.">
+          </div>
+          <button type="submit" class="btn btn-primary">Add to the Memorial Wall</button>
+          <p id="storyConfirm" class="story-confirm" role="status" hidden>Thank you — their story now stands on the wall below.</p>
+          <p class="story-privacy">Stories are stored in your browser for this demo site. A production build would
+            save them to a shared server so every visitor sees every family's tribute.</p>
+        </form>
+
+        <div class="story-wall reveal">
+          <div id="storyGrid" class="story-grid"></div>
+          <p id="storyEmpty" class="story-empty" hidden>No stories yet — be the first to light a name here.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <p class="footer-brand">Know Your Heroes</p>
+    <p class="footer-note">Built as a tribute project. Historical figures are approximate and drawn from public
+      record; they vary across sources. This is an educational fan project and is not affiliated with the
+      Ministry of Defence, Government of India.</p>
+    <p class="footer-credit">जय हिंद 🇮🇳 — In memory of those who did not return.</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
