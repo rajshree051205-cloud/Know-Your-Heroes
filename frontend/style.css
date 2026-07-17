@@ -151,22 +151,50 @@ button{ font-family: inherit; }
 
 /* ---------- hero ---------- */
 .hero{ position: relative; text-align:center; }
-.hero-flag-parallax{
-  position:absolute; top:50%; left:50%; width: min(620px, 74vw); aspect-ratio: 3 / 2;
-  transform: translate(-50%,-54%);
-  pointer-events:none;
-  will-change: transform;
-  transition: transform .3s ease-out;
+
+.hero-emblem-field{
+  position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+  pointer-events:none; perspective: 1400px; overflow: hidden;
 }
-.hero-flag{
-  width:100%; height:100%;
-  filter: drop-shadow(0 35px 45px rgba(32,40,31,0.2));
-  animation: flagDrift 7s ease-in-out infinite;
+.hero-emblem-parallax{
+  transition: transform .35s ease-out; will-change: transform;
 }
-.hero-flag canvas{ display:block; width:100%; height:100%; }
-@keyframes flagDrift{
-  0%, 100%{ transform: rotate(-0.6deg); }
-  50%{ transform: rotate(0.6deg); }
+.emblem-disc{
+  width: min(440px, 58vw); aspect-ratio: 1;
+  position: relative; transform-style: preserve-3d;
+  transform: rotateX(58deg) rotateZ(0deg);
+  animation: emblemSpin 18s linear infinite;
+}
+@keyframes emblemSpin{ to{ transform: rotateX(58deg) rotateZ(360deg); } }
+.emblem-face{ position:absolute; inset:0; border-radius:50%; backface-visibility:hidden; }
+.emblem-face-top{ transform: translateZ(16px); filter: drop-shadow(0 0 46px rgba(169,125,46,.4)); }
+.emblem-face-bottom{
+  transform: translateZ(-16px);
+  background: radial-gradient(circle, #16362D 0%, #0B231C 80%);
+  box-shadow: inset 0 0 40px rgba(0,0,0,.5);
+}
+.emblem-rim{
+  position:absolute; inset:0; border-radius:50%;
+  background: linear-gradient(90deg, #7A5A22, #C9973F 50%, #7A5A22);
+  transform: translateZ(0px) scale(1.002);
+  filter: blur(0.3px);
+}
+.particle-field{ position:absolute; inset:0; }
+.spark{
+  position:absolute; width:4px; height:4px; border-radius:50%;
+  background: var(--gold);
+  box-shadow: 0 0 8px 2px rgba(169,125,46,0.55);
+  opacity: 0;
+  animation-name: sparkDrift;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+@keyframes sparkDrift{
+  0%{ transform: translate3d(0,20px,0) scale(0.6); opacity:0; }
+  15%{ opacity: 0.9; }
+  50%{ transform: translate3d(var(--dx,10px), calc(var(--dy,-60px) / 2), 40px) scale(1); }
+  85%{ opacity: 0.5; }
+  100%{ transform: translate3d(var(--dx,10px), var(--dy,-120px), 80px) scale(0.4); opacity:0; }
 }
 .hero-content{
   position:relative; z-index:1; max-width: 760px; margin: 0 auto; padding: 0 24px;
