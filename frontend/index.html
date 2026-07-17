@@ -40,10 +40,31 @@
 
   <!-- ============ HERO ============ -->
   <section class="panel hero" id="hero" style="--z:1">
-    <div class="hero-flag-parallax">
-      <div class="hero-flag" aria-hidden="true">
-        <canvas id="flagCanvas"></canvas>
+    <div class="hero-emblem-field" aria-hidden="true">
+      <div class="hero-emblem-parallax">
+        <div class="emblem-disc">
+          <div class="emblem-face emblem-face-bottom"></div>
+          <div class="emblem-rim"></div>
+          <div class="emblem-face emblem-face-top">
+            <svg viewBox="0 0 400 400" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <radialGradient id="discGrad" cx="50%" cy="42%" r="65%">
+                  <stop offset="0%" stop-color="#2C6E5A"/>
+                  <stop offset="70%" stop-color="#1F4B3F"/>
+                  <stop offset="100%" stop-color="#123128"/>
+                </radialGradient>
+              </defs>
+              <circle cx="200" cy="200" r="196" fill="url(#discGrad)" stroke="#A97D2E" stroke-width="3"/>
+              <circle cx="200" cy="200" r="168" fill="none" stroke="#E9A15C" stroke-width="1.4" opacity="0.5"/>
+              <circle cx="200" cy="200" r="70" fill="none" stroke="#A97D2E" stroke-width="2.4"/>
+              <circle cx="200" cy="200" r="10" fill="#E9A15C"/>
+              <g id="emblemSpokes" stroke="#A97D2E" stroke-width="2"></g>
+              <g id="emblemStuds" fill="#E9A15C"></g>
+            </svg>
+          </div>
+        </div>
       </div>
+      <div id="particleField" class="particle-field"></div>
     </div>
     <div class="hero-content">
       <p class="eyebrow">A living tribute · est. <span id="heroYears">1947</span></p>
