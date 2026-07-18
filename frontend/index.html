@@ -29,6 +29,8 @@
     <a href="#timeline" class="nav-link">Wars</a>
     <a href="#operations" class="nav-link">Operations</a>
     <a href="#defenceOverview" class="nav-link">Defence Today</a>
+    <a href="memoriam.html" class="nav-link">In Memoriam</a>
+    <a href="toll.html" class="nav-link">The Toll</a>
     <a href="#storyWall" class="nav-link">Share a Story</a>
   </nav>
   <button id="soundToggle" class="sound-toggle" title="Toggle ambient sound" aria-label="Toggle ambient sound">
@@ -93,8 +95,14 @@
           </div>
 
           <div class="coverflow-stage">
+            <button type="button" class="coverflow-arrow coverflow-arrow-prev" id="coverflowPrev" aria-label="Previous war">
+              <svg viewBox="0 0 24 24" width="22" height="22"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M15 5l-7 7 7 7"/></svg>
+            </button>
             <div class="coverflow-line" aria-hidden="true"></div>
             <div id="coverflow" class="coverflow-track" role="listbox" aria-label="Select a war"></div>
+            <button type="button" class="coverflow-arrow coverflow-arrow-next" id="coverflowNext" aria-label="Next war">
+              <svg viewBox="0 0 24 24" width="22" height="22"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+            </button>
           </div>
           <p class="wheel-hint">10 wars, 1947 → present · keep scrolling to march through all of them</p>
         </div>
