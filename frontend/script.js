@@ -9,6 +9,7 @@
 const WARS = [
   {
     id: "1947",
+    video: "xcBOncz8HTY",
     year: "1947–48",
     title: "First Kashmir War",
     dates: "22 Oct 1947 – 1 Jan 1949",
@@ -25,6 +26,7 @@ const WARS = [
   },
   {
     id: "1961",
+    video: "mLClESxLe3M",
     year: "1961",
     title: "Annexation of Goa",
     dates: "18 – 19 Dec 1961",
@@ -40,6 +42,7 @@ const WARS = [
   },
   {
     id: "1962",
+    video: "yQvIzSyBjO8",
     year: "1962",
     title: "Sino-Indian War",
     dates: "20 Oct – 21 Nov 1962",
@@ -56,6 +59,7 @@ const WARS = [
   },
   {
     id: "1965",
+    video: "suXidG1peSA",
     year: "1965",
     title: "Indo-Pakistani War of 1965",
     dates: "5 Aug – 23 Sep 1965",
@@ -72,6 +76,7 @@ const WARS = [
   },
   {
     id: "1971",
+    video: "Jc79vCNfnHI",
     year: "1971",
     title: "Indo-Pakistani War of 1971",
     dates: "3 – 16 Dec 1971",
@@ -88,6 +93,7 @@ const WARS = [
   },
   {
     id: "1984",
+    video: "XXGl4iAjqbM",
     year: "1984–present",
     title: "Operation Meghdoot — Siachen",
     dates: "13 Apr 1984 – ongoing",
@@ -103,6 +109,7 @@ const WARS = [
   },
   {
     id: "1987",
+    video: "pnlhiHcHN5E",
     year: "1987–90",
     title: "Indian Peace Keeping Force",
     dates: "1987 – 1990",
@@ -118,6 +125,7 @@ const WARS = [
   },
   {
     id: "1999",
+    video: "yzUszSFNmPs",
     year: "1999",
     title: "Kargil War",
     dates: "3 May – 26 Jul 1999",
@@ -135,6 +143,7 @@ const WARS = [
   },
   {
     id: "2019",
+    video: "OLc1y7BekNA",
     year: "2019",
     title: "Balakot Airstrike",
     dates: "26 Feb 2019",
@@ -150,6 +159,7 @@ const WARS = [
   },
   {
     id: "2020",
+    video: "FQ8xMOLGW_Y",
     year: "2020",
     title: "Galwan Valley Clash",
     dates: "15 – 16 Jun 2020",
@@ -292,11 +302,15 @@ function renderDetail(i) {
         </dl>
       </div>
       <div class="detail-block">
-        <h4>Learn more</h4>
-        <p class="media-note">Video and photo archives are best explored on official sources.</p>
-        <a class="media-link" target="_blank" rel="noopener"
-           href="https://www.youtube.com/results?search_query=${encodeURIComponent(w.title + " India")}">
-           Search documentaries on ${w.title} ↗
+        <h4>Watch: the full story</h4>
+        <div class="video-embed">
+          <iframe src="https://www.youtube.com/embed/${w.video}" title="Documentary: ${w.title}"
+            loading="lazy" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+        </div>
+        <a class="media-link" target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=${w.video}">
+          Open on YouTube ↗
         </a>
       </div>
     </div>
@@ -494,8 +508,10 @@ function initReveals() {
 function initNav() {
   const links = $$(".nav-link");
   links.forEach(link => {
+    const href = link.getAttribute("href") || "";
+    if (!href.startsWith("#")) return;
     link.addEventListener("click", (e) => {
-      const target = document.querySelector(link.getAttribute("href"));
+      const target = document.querySelector(href);
       if (target) {
         e.preventDefault();
         target.scrollIntoView({ behavior: "smooth" });
@@ -640,6 +656,9 @@ document.addEventListener("DOMContentLoaded", () => {
   initParticles();
   initTiltDelegated(".hero-card, .op-card, .story-card");
   initHeroParallax();
+
+  $("#coverflowPrev")?.addEventListener("click", () => setActive(activeIndex - 1, true));
+  $("#coverflowNext")?.addEventListener("click", () => setActive(activeIndex + 1, true));
 
   window.addEventListener("scroll", throttleRAF(onWheelScroll));
   window.addEventListener("resize", throttleRAF(() => { wheelSectionTop = wheelSection.offsetTop; }));
