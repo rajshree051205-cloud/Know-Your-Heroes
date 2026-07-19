@@ -9,6 +9,7 @@
 const WARS = [
   {
     id: "1947",
+    video: "xcBOncz8HTY",
     year: "1947–48",
     title: "First Kashmir War",
     dates: "22 Oct 1947 – 1 Jan 1949",
@@ -25,6 +26,7 @@ const WARS = [
   },
   {
     id: "1961",
+    video: "mLClESxLe3M",
     year: "1961",
     title: "Annexation of Goa",
     dates: "18 – 19 Dec 1961",
@@ -40,6 +42,7 @@ const WARS = [
   },
   {
     id: "1962",
+    video: "yQvIzSyBjO8",
     year: "1962",
     title: "Sino-Indian War",
     dates: "20 Oct – 21 Nov 1962",
@@ -56,6 +59,7 @@ const WARS = [
   },
   {
     id: "1965",
+    video: "suXidG1peSA",
     year: "1965",
     title: "Indo-Pakistani War of 1965",
     dates: "5 Aug – 23 Sep 1965",
@@ -72,6 +76,7 @@ const WARS = [
   },
   {
     id: "1971",
+    video: "Jc79vCNfnHI",
     year: "1971",
     title: "Indo-Pakistani War of 1971",
     dates: "3 – 16 Dec 1971",
@@ -88,6 +93,7 @@ const WARS = [
   },
   {
     id: "1984",
+    video: "XXGl4iAjqbM",
     year: "1984–present",
     title: "Operation Meghdoot — Siachen",
     dates: "13 Apr 1984 – ongoing",
@@ -103,6 +109,7 @@ const WARS = [
   },
   {
     id: "1987",
+    video: "pnlhiHcHN5E",
     year: "1987–90",
     title: "Indian Peace Keeping Force",
     dates: "1987 – 1990",
@@ -118,6 +125,7 @@ const WARS = [
   },
   {
     id: "1999",
+    video: "yzUszSFNmPs",
     year: "1999",
     title: "Kargil War",
     dates: "3 May – 26 Jul 1999",
@@ -135,6 +143,7 @@ const WARS = [
   },
   {
     id: "2019",
+    video: "OLc1y7BekNA",
     year: "2019",
     title: "Balakot Airstrike",
     dates: "26 Feb 2019",
@@ -150,6 +159,7 @@ const WARS = [
   },
   {
     id: "2020",
+    video: "FQ8xMOLGW_Y",
     year: "2020",
     title: "Galwan Valley Clash",
     dates: "15 – 16 Jun 2020",
@@ -292,11 +302,15 @@ function renderDetail(i) {
         </dl>
       </div>
       <div class="detail-block">
-        <h4>Learn more</h4>
-        <p class="media-note">Video and photo archives are best explored on official sources.</p>
-        <a class="media-link" target="_blank" rel="noopener"
-           href="https://www.youtube.com/results?search_query=${encodeURIComponent(w.title + " India")}">
-           Search documentaries on ${w.title} ↗
+        <h4>Watch: the full story</h4>
+        <div class="video-embed">
+          <iframe src="https://www.youtube.com/embed/${w.video}" title="Documentary: ${w.title}"
+            loading="lazy" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+        </div>
+        <a class="media-link" target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=${w.video}">
+          Open on YouTube ↗
         </a>
       </div>
     </div>
@@ -494,8 +508,10 @@ function initReveals() {
 function initNav() {
   const links = $$(".nav-link");
   links.forEach(link => {
+    const href = link.getAttribute("href") || "";
+    if (!href.startsWith("#")) return;
     link.addEventListener("click", (e) => {
-      const target = document.querySelector(link.getAttribute("href"));
+      const target = document.querySelector(href);
       if (target) {
         e.preventDefault();
         target.scrollIntoView({ behavior: "smooth" });
@@ -531,80 +547,53 @@ function initSoundToggle() {
   });
 }
 
-/* ---------- 9b. WAVING FLAG — canvas cloth simulation ---------- */
+/* ---------- 9b. HERO EMBLEM — spokes + floating light particles ---------- */
 
-function initWavingFlag() {
-  const canvas = $("#flagCanvas");
-  if (!canvas) return;
-  const ctx = canvas.getContext("2d");
-  const parent = canvas.parentElement;
-
-  // -- build the flag texture once, offscreen --
-  const TW = 900, TH = 600;
-  const tex = document.createElement("canvas");
-  tex.width = TW; tex.height = TH;
-  const tctx = tex.getContext("2d");
-
-  tctx.fillStyle = "#FF9933"; tctx.fillRect(0, 0, TW, TH / 3);
-  tctx.fillStyle = "#FFFFFF"; tctx.fillRect(0, TH / 3, TW, TH / 3);
-  tctx.fillStyle = "#138808"; tctx.fillRect(0, (2 * TH) / 3, TW, TH / 3);
-
-  const cx = TW / 2, cy = TH / 2, r = TH * 0.15;
-  tctx.strokeStyle = "#0B3D91";
-  tctx.lineWidth = TH * 0.013;
-  tctx.beginPath(); tctx.arc(cx, cy, r, 0, Math.PI * 2); tctx.stroke();
-  tctx.fillStyle = "#0B3D91";
-  tctx.beginPath(); tctx.arc(cx, cy, TH * 0.017, 0, Math.PI * 2); tctx.fill();
-  for (let i = 0; i < 24; i++) {
-    const a = (i * Math.PI * 2) / 24;
-    tctx.save();
-    tctx.translate(cx, cy);
-    tctx.rotate(a);
-    tctx.lineWidth = TH * 0.006;
-    tctx.beginPath(); tctx.moveTo(0, 0); tctx.lineTo(0, -r * 0.92); tctx.stroke();
-    tctx.restore();
+function buildEmblemDetail() {
+  const spokes = $("#emblemSpokes");
+  const studs = $("#emblemStuds");
+  if (!spokes || !studs) return;
+  const cx = 200, cy = 200, rOuter = 168, rInner = 70;
+  for (let i = 0; i < 32; i++) {
+    const a = (i * Math.PI * 2) / 32;
+    const x1 = cx + Math.cos(a) * rInner, y1 = cy + Math.sin(a) * rInner;
+    const x2 = cx + Math.cos(a) * rOuter, y2 = cy + Math.sin(a) * rOuter;
+    const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+    line.setAttribute("x1", x1); line.setAttribute("y1", y1);
+    line.setAttribute("x2", x2); line.setAttribute("y2", y2);
+    line.setAttribute("opacity", i % 2 === 0 ? "0.9" : "0.4");
+    spokes.appendChild(line);
   }
-
-  // -- size the live canvas to its container, respecting device pixel ratio --
-  function resize() {
-    const rect = parent.getBoundingClientRect();
-    const dpr = Math.min(window.devicePixelRatio || 1, 2);
-    canvas.width = Math.max(1, rect.width * dpr);
-    canvas.height = Math.max(1, rect.height * dpr);
+  for (let i = 0; i < 16; i++) {
+    const a = (i * Math.PI * 2) / 16;
+    const x = cx + Math.cos(a) * rOuter, y = cy + Math.sin(a) * rOuter;
+    const dot = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+    dot.setAttribute("cx", x); dot.setAttribute("cy", y); dot.setAttribute("r", 3.4);
+    studs.appendChild(dot);
   }
-  resize();
-  window.addEventListener("resize", throttleRAF(resize));
+}
 
-  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const supportsFilter = "filter" in ctx;
-  const COLS = 110;
-  let t = 0;
-
-  function frame() {
-    const w = canvas.width, h = canvas.height;
-    if (w > 0 && h > 0) {
-      ctx.clearRect(0, 0, w, h);
-      const colW = w / COLS;
-      for (let i = 0; i < COLS; i++) {
-        const xNorm = i / COLS;
-        // amplitude grows toward the free (right) edge, like it's anchored on the left
-        const amp = xNorm * xNorm * h * 0.05;
-        const phase = xNorm * 7.5 - t;
-        const yOff = Math.sin(phase) * amp;
-        const shade = 0.82 + 0.18 * Math.cos(phase); // simulated fold lighting
-
-        const sx = xNorm * TW;
-        const sw = TW / COLS + 2;
-
-        if (supportsFilter) ctx.filter = `brightness(${shade.toFixed(3)})`;
-        ctx.drawImage(tex, sx, 0, sw, TH, i * colW, yOff, colW + 1, h);
-      }
-      if (supportsFilter) ctx.filter = "none";
-    }
-    t += prefersReducedMotion ? 0 : 0.02;
-    requestAnimationFrame(frame);
+function initParticles() {
+  const field = $("#particleField");
+  if (!field) return;
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const COUNT = 20;
+  for (let i = 0; i < COUNT; i++) {
+    const s = document.createElement("span");
+    s.className = "spark";
+    const left = 20 + Math.random() * 60;
+    const dx = (Math.random() - 0.5) * 140;
+    const dy = -(80 + Math.random() * 160);
+    const duration = 5 + Math.random() * 5;
+    const delay = Math.random() * 6;
+    s.style.left = left + "%";
+    s.style.top = 55 + Math.random() * 20 + "%";
+    s.style.setProperty("--dx", dx + "px");
+    s.style.setProperty("--dy", dy + "px");
+    s.style.animationDuration = duration + "s";
+    s.style.animationDelay = delay + "s";
+    field.appendChild(s);
   }
-  requestAnimationFrame(frame);
 }
 
 /* ---------- 9c. PREMIUM 3D MICRO-INTERACTIONS ---------- */
@@ -634,7 +623,7 @@ function initTiltDelegated(selector, maxTilt = 9, scale = 1.03) {
 function initHeroParallax() {
   const hero = $("#hero");
   const content = $(".hero-content");
-  const flagWrap = $(".hero-flag-parallax");
+  const emblemWrap = $(".hero-emblem-parallax");
   if (!hero || matchMedia("(hover: none)").matches) return;
 
   hero.addEventListener("mousemove", (e) => {
@@ -642,11 +631,11 @@ function initHeroParallax() {
     const px = (e.clientX - rect.left) / rect.width - 0.5;
     const py = (e.clientY - rect.top) / rect.height - 0.5;
     if (content) content.style.transform = `translate3d(${(px * -14).toFixed(1)}px, ${(py * -10).toFixed(1)}px, 0)`;
-    if (flagWrap) flagWrap.style.transform = `translate(calc(-50% + ${(px * 22).toFixed(1)}px), calc(-54% + ${(py * 16).toFixed(1)}px))`;
+    if (emblemWrap) emblemWrap.style.transform = `translate3d(${(px * 26).toFixed(1)}px, ${(py * 18).toFixed(1)}px, 0)`;
   });
   hero.addEventListener("mouseleave", () => {
     if (content) content.style.transform = "";
-    if (flagWrap) flagWrap.style.transform = "translate(-50%,-54%)";
+    if (emblemWrap) emblemWrap.style.transform = "";
   });
 }
 
@@ -663,9 +652,13 @@ document.addEventListener("DOMContentLoaded", () => {
   initReveals();
   initNav();
   initSoundToggle();
-  initWavingFlag();
+  buildEmblemDetail();
+  initParticles();
   initTiltDelegated(".hero-card, .op-card, .story-card");
   initHeroParallax();
+
+  $("#coverflowPrev")?.addEventListener("click", () => setActive(activeIndex - 1, true));
+  $("#coverflowNext")?.addEventListener("click", () => setActive(activeIndex + 1, true));
 
   window.addEventListener("scroll", throttleRAF(onWheelScroll));
   window.addEventListener("resize", throttleRAF(() => { wheelSectionTop = wheelSection.offsetTop; }));
