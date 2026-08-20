@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>In Memoriam — Know Your Heroes</title>
+<meta name="description" content="They fought for us but never returned. A tribute to the fallen heroes of India's armed forces." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header class="site-header">
+  <a href="index.html" class="brand">
+    <span class="brand-mark" aria-hidden="true">
+      <svg viewBox="0 0 40 40" width="28" height="28"><circle cx="20" cy="20" r="18" fill="none" stroke="currentColor" stroke-width="1.4"/><g stroke="currentColor" stroke-width="1"><line x1="20" y1="4" x2="20" y2="36"/><line x1="4" y1="20" x2="36" y2="20"/><line x1="8.3" y1="8.3" x2="31.7" y2="31.7"/><line x1="31.7" y1="8.3" x2="8.3" y2="31.7"/></g><circle cx="20" cy="20" r="3" fill="currentColor"/></svg>
+    </span>
+    Know Your Heroes
+  </a>
+  <nav class="site-nav">
+    <a href="index.php#timeline" class="nav-link">Wars</a>
+    <a href="index.php#operations" class="nav-link">Operations</a>
+    <a href="index.php#defenceOverview" class="nav-link">Defence Today</a>
+    <a href="memoriam.php" class="nav-link is-current">In Memoriam</a>
+    <a href="toll.php" class="nav-link">The Toll</a>
+    <a href="index.php#storyWall" class="nav-link">Share a Story</a>
+  </nav>
+</header>
+
+<main class="page-main memoriam-page">
+
+  <section class="memoriam-hero">
+    <div class="memoriam-hero-inner">
+      <p class="eyebrow">In Memoriam</p>
+      <h1>They fought for us,<br>and never returned.</h1>
+      <p class="memoriam-lines">
+        No medal replaces a chair left empty at the table.<br>
+        No monument keeps a mother from setting two cups instead of one.<br>
+        We did not know most of their names before today —<br>
+        so we ask you to learn a few of them now, and carry them a little further.
+      </p>
+    </div>
+  </section>
+
+  <section class="memoriam-grid-section">
+    <div class="section-head reveal">
+      <p class="eyebrow">A partial roll — verified, real, remembered</p>
+      <h2>Faces of Sacrifice</h2>
+      <p class="section-lede">Every name below is real, drawn from the public record of India's gallantry
+        awards. This wall is deliberately small enough to be accurate rather than large and uncertain — if your
+        family carries the memory of someone who belongs here, <a href="index.html#storyWall">share their story</a>
+        and we'll add them.</p>
+    </div>
+    <div id="memoriamGrid" class="memoriam-grid"></div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <p class="footer-brand">Know Your Heroes</p>
+    <p class="footer-note">Built as a tribute project. Historical figures are approximate and drawn from public
+      record; they vary across sources. This is an educational fan project and is not affiliated with the
+      Ministry of Defence, Government of India.</p>
+    <p class="footer-credit">जय हिंद 🇮🇳 — In memory of those who did not return.</p>
+  </div>
+</footer>
+
+<script src="memoriam.js"></script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Toll — Know Your Heroes</title>
+<meta name="description" content="An approximate graph of India's military sacrifice from 1947 to the present." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header class="site-header">
+  <a href="index.html" class="brand">
+    <span class="brand-mark" aria-hidden="true">
+      <svg viewBox="0 0 40 40" width="28" height="28"><circle cx="20" cy="20" r="18" fill="none" stroke="currentColor" stroke-width="1.4"/><g stroke="currentColor" stroke-width="1"><line x1="20" y1="4" x2="20" y2="36"/><line x1="4" y1="20" x2="36" y2="20"/><line x1="8.3" y1="8.3" x2="31.7" y2="31.7"/><line x1="31.7" y1="8.3" x2="8.3" y2="31.7"/></g><circle cx="20" cy="20" r="3" fill="currentColor"/></svg>
+    </span>
+    Know Your Heroes
+  </a>
+  <nav class="site-nav">
+    <a href="index.php#timeline" class="nav-link">Wars</a>
+    <a href="index.php#operations" class="nav-link">Operations</a>
+    <a href="index.php#defenceOverview" class="nav-link">Defence Today</a>
+    <a href="memoriam.php" class="nav-link">In Memoriam</a>
+    <a href="toll.php" class="nav-link is-current">The Toll</a>
+    <a href="index.php#storyWall" class="nav-link">Share a Story</a>
+  </nav>
+</header>
+
+<main class="page-main toll-page">
+
+  <section class="toll-hero">
+    <div class="section-head">
+      <p class="eyebrow">1947 — Present</p>
+      <h1>The Toll</h1>
+      <p class="section-lede">A rough graph of how many soldiers India has lost in each major conflict since
+        independence. These are approximate, publicly reported figures — they vary by source, and no chart can
+        hold the actual weight of any one of these numbers.</p>
+    </div>
+  </section>
+
+  <section class="toll-chart-section">
+    <div id="tollChart" class="toll-chart"></div>
+    <p class="toll-source">Figures are widely-cited public approximations per conflict, not official classified
+      data. Where sources disagree, the commonly cited mid-range figure is used.</p>
+  </section>
+
+  <section class="toll-cumulative-section">
+    <div class="section-head reveal">
+      <p class="eyebrow">Running total</p>
+      <h2>Since 1947</h2>
+      <p class="section-lede">The same figures, added up over time — a rough sense of the cumulative cost of
+        defending India's borders across eight decades.</p>
+    </div>
+    <div id="tollCumulative" class="toll-cumulative"></div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <p class="footer-brand">Know Your Heroes</p>
+    <p class="footer-note">Built as a tribute project. Historical figures are approximate and drawn from public
+      record; they vary across sources. This is an educational fan project and is not affiliated with the
+      Ministry of Defence, Government of India.</p>
+    <p class="footer-credit">जय हिंद 🇮🇳 — In memory of those who did not return.</p>
+  </div>
+</footer>
+
+<script src="toll.js"></script>
+</body>
+</html>
