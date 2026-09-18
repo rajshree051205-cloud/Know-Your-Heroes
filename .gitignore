@@ -1,0 +1,42 @@
+# Environment variables & secrets
+.env
+.env.local
+.env.*.local
+config/database.yml
+*.pem
+*.key
+
+# Database files
+*.sql
+*.sqlite
+*.sqlite3
+*.db
+db.json
+dump.sql
+backup.sql
+
+# Dependencies
+node_modules/
+vendor/
+__pycache__/
+*.pyc
+venv/
+env/
+
+# Build output
+dist/
+build/
+*.log
+*.class
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Logs & temp files
+logs/
+*.log
+tmp/
+*.tmp
