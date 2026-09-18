@@ -1,123 +1,96 @@
 # 🇮🇳 Know Your Heroes
 
-A full-stack web application dedicated to honoring the brave heroes of the Indian Armed Forces. The platform aims to provide information about India's military heroes, their achievements, gallantry awards, major wars, and military operations through an interactive and educational experience.
+> A full-stack web application created to honor and preserve the stories of the brave heroes of the Indian Armed Forces.
 
-> 🚧 **Project Status:** Frontend Completed | Backend Under Development
+**Know Your Heroes** is an interactive memorial and educational platform that showcases Indian military heroes, major wars, military operations, and personal stories of soldiers.
+
+The project combines a responsive frontend with a Node.js/Express backend and MySQL database to support dynamic story submissions and content management.
+
+---
+
+## 📌 Project Status
+
+🚀 **Frontend:** Completed  
+⚙️ **Backend:** Implemented and under active development  
+🗄️ **Database:** MySQL integration implemented
 
 ---
 
 ## 📖 About the Project
 
-**Know Your Heroes** is a full-stack web application built to educate and inspire users by showcasing the stories of Indian Army heroes and significant military events. The project combines an engaging user interface with dynamic backend functionality (currently in development).
+**Know Your Heroes** aims to create a digital space where users can learn about the courage, sacrifice, and service of Indian Armed Forces personnel.
+
+The platform provides information about:
+
+- 🇮🇳 Indian military heroes
+- 🏅 Gallantry awards
+- ⚔️ Major wars and military operations
+- 🕯️ Memorial stories
+- 📖 Personal stories submitted by users
+- 🎖️ Contributions and sacrifices of soldiers
+
+The application is designed with a focus on an engaging, responsive, and educational user experience.
 
 ---
 
-## ✨ Current Features (Frontend)
+## ✨ Features
+
+### 🎨 Frontend
 
 - 🇮🇳 Interactive landing page
-- 🪖 Hero showcase section
+- 🪖 Hero showcase
 - ⚔️ Major wars and military operations timeline
-- 📖 Story wall section
+- 🕯️ Memorial / In Memoriam section
+- 📖 Story wall
 - 🎵 Patriotic background music
 - ✨ Smooth animations and transitions
-- 📱 Fully responsive design
+- 📱 Responsive design
 - 🎨 Modern UI/UX
 
----
+### ⚙️ Backend
 
-## 🚀 Upcoming Features (Backend)
-
-- 🔐 User authentication
-- 📝 Admin dashboard to manage heroes and stories
-- 🗄️ Database integration
-- 🔍 Dynamic search and filtering
-- 💬 User story submission
-- ❤️ Favorite heroes feature
-- 📊 Dynamic content management
-- ☁️ Cloud database support
+- 🚀 Node.js + Express REST API
+- 🗄️ MySQL database integration
+- 🔗 Connection pooling using MySQL2
+- 🌐 CORS configuration
+- 🔐 Environment variable support using dotenv
+- ❤️ Story submission system
+- ✅ Story approval system
+- 🔍 Fetch approved stories
+- 📄 Fetch individual stories by ID
+- ❤️ Health-check API
 
 ---
 
 ## 🛠️ Tech Stack
 
 ### Frontend
+
 - HTML5
 - CSS3
 - JavaScript
 
-### Backend *(In Progress)*
-- PHP
+### Backend
+
+- Node.js
+- Express.js
 - MySQL
+- MySQL2
+- CORS
+- dotenv
+
+### Development Tools
+
+- Git
+- GitHub
+- VS Code
+- Nodemon
 
 ---
 
-## 📂 Project Structure
+## 🔌 API Endpoints
 
-```
-Know-Your-Heroes/
-│
-├── frontend/
-│   ├── index.html
-│   ├── style.css
-│   └── script.js
-│
-├── backend/          (Coming Soon)
-├── database/         (Coming Soon)
-├── README.md
-└── LICENSE
-```
+### Health Check
 
----
-
-## 🚀 Installation
-
-1. Clone the repository
-
-```bash
-git clone https://github.com/rajshree051205-cloud/Know-Your-Heroes.git
-```
-
-2. Open the project folder in Visual Studio Code.
-
-3. Launch `index.html` using Live Server or any modern web browser.
-
----
-
-## 🎯 Project Roadmap
-
-- [x] Design UI/UX
-- [x] Develop responsive frontend
-- [x] Hero and wars interface
-- [ ] PHP backend development
-- [ ] MySQL database integration
-- [ ] Admin panel
-- [ ] User authentication
-- [ ] Dynamic hero management
-- [ ] Story submission system
-- [ ] Deployment
-
----
-
-## 👩‍💻 Developer
-
-**Rajshree Kavia**
-
-B.Tech Computer Science Engineering (CSE)
-
-GitHub: https://github.com/rajshree051205-cloud
-
----
-
-## 📄 License
-
-This project is licensed under the MIT License.
-
----
-
-## 🙏 Tribute
-
-This project is dedicated to the brave soldiers of the **Indian Armed Forces** whose courage, sacrifice, and service continue to inspire generations.
-
-> **"Service Before Self."**
-
-⭐ If you find this project meaningful, consider giving it a star!
+```http
+GET /api/health
